@@ -53,32 +53,30 @@ A ideia é comparar os municípios com base em dados reais, considerando o merca
 
 ## O que será analisado?
 
+
 <table>
   <tr>
-    <td width="50%">
-      <img src="https://img.icons8.com/fluency/96/home.png" width="40" alt="Mercado">
+    <td width="33%" align="center">
+      <img src="https://img.icons8.com/fluency/96/home.png"
+           width="40" alt="Mercado">
       <h3>Mercado</h3>
       <p>População e quantidade de domicílios.</p>
     </td>
-    <td width="50%">
-      <img src="https://img.icons8.com/fluency/96/shop.png" width="40" alt="Concorrência">
-      <h3>Concorrência</h3>
-      <p>Presença de concorrentes e relação com o mercado consumidor.</p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%">
-      <img src="https://img.icons8.com/fluency/96/combo-chart.png" width="40" alt="Crescimento">
+    <td width="33%" align="center">
+      <img src="https://img.icons8.com/fluency/96/combo-chart.png"
+           width="40" alt="Crescimento">
       <h3>Crescimento</h3>
       <p>Indicadores demográficos e evolução do mercado de trabalho.</p>
     </td>
-    <td width="50%">
-      <img src="https://img.icons8.com/fluency/96/money.png" width="40" alt="Poder de compra">
-      <h3>Poder de compra</h3>
+    <td width="33%" align="center">
+      <img src="https://img.icons8.com/fluency/96/money.png"
+           width="40" alt="Poder de compra">
+      <h3>Poder de Compra</h3>
       <p>Renda, ocupação e população em idade ativa.</p>
     </td>
   </tr>
 </table>
+
 
 ## Tecnologias
 
