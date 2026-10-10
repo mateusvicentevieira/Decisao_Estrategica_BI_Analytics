@@ -39,48 +39,170 @@
 
 ---
 
-## 02. Renda Mediana
+<h2>02. Renda Mediana</h2>
 
-<img src="https://img.icons8.com/fluency/96/money-bag.png" width="45" alt="Renda Mediana">
+<table>
+  <tr>
+    <td width="70%">
+      <h3>O que esse indicador mede?</h3>
+      O valor que divide a população em duas partes iguais:
+      metade possui renda inferior ao valor mediano e metade possui
+      renda superior.
+      <br><br>
+      <strong>Objetivo:</strong> avaliar a condição econômica típica
+      da população de cada município.
+    </td>
+    <td align="center" width="30%">
+      <img src="https://img.icons8.com/fluency/96/money-bag.png"
+           width="75" alt="Renda Mediana">
+      <br>
+      <strong>Poder de compra</strong>
+    </td>
+  </tr>
+</table>
 
-**Definição:** Valor que divide a população analisada em duas partes iguais em relação à renda, representando melhor a condição econômica típica do município do que a média.
+<h3>Por que utilizar?</h3>
 
-**Por que utilizar?** A renda mediana permite avaliar a capacidade econômica típica da população do município sem sofrer a mesma influência de valores extremos que uma média pode sofrer. Dessa forma, ajuda a identificar municípios onde a população possui maior capacidade econômica potencial para consumir materiais de construção. O indicador será analisado somente no município avaliado. Posteriormente, poderá ser criada uma análise complementar considerando a zona de influência de até 20 km, sem substituir o indicador municipal.
+A mediana sofre menos influência de rendas muito altas ou muito baixas
+do que a média. Isso ajuda a comparar a condição econômica típica
+dos municípios.
 
-**Fórmula:** Renda Mediana = valor central da distribuição de renda da população analisada.
+<blockquote>
+  <strong>Área analisada:</strong> município individual.
+  <br>
+  <strong>Etapa futura:</strong> análise complementar da zona de
+  influência de até 20 km, sem substituir o indicador municipal.
+</blockquote>
 
-**Como entra na análise?** Será transformada em Score 0–100 antes da aplicação do peso definido para o nível de Poder de Compra. 
+<h3>Como será calculado?</h3>
 
-**Direção:** Quanto maior, maior o potencial econômico.
+<table>
+  <tr>
+    <td align="center">
+      <strong>Renda Mediana</strong>
+      <br><br>
+      Valor central da distribuição de renda da população analisada.
+    </td>
+  </tr>
+</table>
 
----
+<h3>Como entra na análise?</h3>
 
-## 03. Taxa de Ocupação
+<ul>
+  <li>Será convertida em um score de 0 a 100.</li>
+  <li>Receberá o peso definido para o nível de Poder de Compra.</li>
+  <li>Quanto maior a renda mediana, maior o potencial econômico indicado.</li>
+</ul>
 
-<img src="https://img.icons8.com/fluency/96/worker-male.png" width="45" alt="Taxa de Ocupação">
+<hr>
 
-**Definição:** Proporção da população em idade de trabalhar que está ocupada no município analisado.
+<h2>03. Taxa de Ocupação</h2>
 
-**Por que utilizar?** A renda mediana indica a condição econômica típica da população, mas não mostra sozinha a participação da população no mercado de trabalho. A taxa de ocupação complementa essa análise ao indicar a proporção da população em idade de trabalhar que efetivamente está ocupada, contribuindo para uma avaliação mais consistente da capacidade econômica da região. O indicador também ajuda a diferenciar municípios que possuem renda mediana semelhante, mas apresentam estruturas de participação no mercado de trabalho diferentes.
+<table>
+  <tr>
+    <td width="70%">
+      <h3>O que esse indicador mede?</h3>
+      A proporção da população em idade de trabalhar que está ocupada
+      no município.
+      <br><br>
+      <strong>Objetivo:</strong> entender a participação da população
+      no mercado de trabalho.
+    </td>
+    <td align="center" width="30%">
+      <img src="https://img.icons8.com/fluency/96/worker-male.png"
+           width="75" alt="Taxa de Ocupação">
+      <br>
+      <strong>Mercado de trabalho</strong>
+    </td>
+  </tr>
+</table>
 
-**Fórmula:** Taxa de Ocupação = (População Ocupada / População em Idade de Trabalhar) × 100.
+<h3>Por que utilizar?</h3>
 
-**Como entra na análise?** Será transformada em Score 0–100 antes da aplicação do peso definido para o nível de Poder de Compra. Não será utilizado inicialmente o tipo de vínculo profissional, como CLT ou PJ, como KPI. O foco será a participação da população no mercado de trabalho.
+A renda mediana mostra a condição econômica típica, mas não revela
+sozinha quantas pessoas estão ocupadas. A taxa de ocupação complementa
+essa análise e ajuda a diferenciar municípios com rendas semelhantes,
+mas com diferentes níveis de participação no trabalho.
 
-**Direção:** Quanto maior, maior a participação da população no mercado de trabalho e, potencialmente, maior a capacidade econômica ativa.
+<h3>Como será calculado?</h3>
 
----
+<table>
+  <tr>
+    <td align="center">
+      <strong>Taxa de Ocupação (%)</strong>
+      <br><br>
+      População Ocupada ÷ População em Idade de Trabalhar × 100
+    </td>
+  </tr>
+</table>
 
-## 04. População em Idade Ativa
+<h3>Como entra na análise?</h3>
 
-<img src="https://img.icons8.com/fluency/96/groups.png" width="45" alt="População em Idade Ativa">
+<ul>
+  <li>Será convertida em um score de 0 a 100.</li>
+  <li>Receberá o peso definido para o nível de Poder de Compra.</li>
+  <li>O foco será a ocupação, sem separar inicialmente vínculos CLT ou PJ.</li>
+  <li>Quanto maior a taxa, maior a participação da população no mercado
+      de trabalho e, potencialmente, maior a capacidade econômica ativa.</li>
+</ul>
 
-**Definição:** Proporção da população do município que se encontra na faixa etária considerada potencialmente ativa para participação no mercado de trabalho.
+<hr>
 
-**Por que utilizar?** A estrutura etária ajuda a compreender o perfil demográfico do mercado consumidor. Uma maior concentração de pessoas em idade potencialmente ativa pode representar uma estrutura demográfica mais associada à geração de renda e à formação de novos domicílios. Entretanto, o indicador não será interpretado como uma medida direta de compradores, pois idade, isoladamente, não determina o comportamento de consumo de materiais de construção.
+<h2>04. População em Idade Ativa</h2>
 
-**Fórmula:** População em Idade Ativa = (População em idade ativa / População total) × 100.
+<table>
+  <tr>
+    <td width="70%">
+      <h3>O que esse indicador mede?</h3>
+      A proporção da população que está na faixa etária considerada
+      potencialmente ativa para participar do mercado de trabalho.
+      <br><br>
+      <strong>Objetivo:</strong> compreender a estrutura etária
+      de cada município.
+    </td>
+    <td align="center" width="30%">
+      <img src="https://img.icons8.com/fluency/96/groups.png"
+           width="75" alt="População em Idade Ativa">
+      <br>
+      <strong>Perfil demográfico</strong>
+    </td>
+  </tr>
+</table>
 
-**Como entra na análise?** Será transformada em Score 0–100, caso seja validada como KPI definitivo para o nível de Poder de Compra.
+<h3>Por que utilizar?</h3>
 
-**Direção:** Quanto maior a proporção de população em idade ativa, maior o potencial demográfico associado à geração de renda.
+Uma maior proporção de pessoas em idade ativa pode estar associada
+à geração de renda e à formação de novos domicílios.
+
+Entretanto, a idade não determina diretamente o comportamento
+de consumo de materiais de construção.
+
+<h3>Como será calculado?</h3>
+
+<table>
+  <tr>
+    <td align="center">
+      <strong>População em Idade Ativa (%)</strong>
+      <br><br>
+      População em Idade Ativa ÷ População Total × 100
+    </td>
+  </tr>
+</table>
+
+<h3>Como entra na análise?</h3>
+
+<ul>
+  <li>A utilização definitiva do indicador ainda será validada.</li>
+  <li>Se aprovado, será convertido em um score de 0 a 100.</li>
+  <li>Quanto maior a proporção, maior o potencial demográfico
+      associado à geração de renda.</li>
+</ul>
+
+<hr>
+
+<div align="center">
+  <img src="https://img.shields.io/badge/Projeto-Decisão%20Estratégica-1565C0?style=for-the-badge">
+  <p><strong>Dados para apoiar decisões de expansão.</strong></p>
+  <sub>KPIs de Poder de Compra | Em desenvolvimento</sub>
+</div>
+
