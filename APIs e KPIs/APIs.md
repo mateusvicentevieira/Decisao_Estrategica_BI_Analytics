@@ -367,18 +367,18 @@ Investiga a estrutura etária, a evolução dos domicílios e a movimentação d
         <code>11558[46292]|14[200]</code>
       </td>
       <td>
-        <a href="https://servicodados.ibge.gov.br/api/v3/agregados/10053/periodos/2022/variaveis/9599?localidades=N6[N3[42]]&classificacao=11558[46292]|14[200]">Consultar API</a>
+        <a href="https://servicodados.ibge.gov.br/api/v3/agregados/10053/periodos/2022/variaveis/9599?localidades=N6[N3[42]]&classificacao=11558[46292]|14[200]" target="_blank" rel="noopener noreferrer">Consultar API</a>
       </td>
     </tr>
     <tr>
       <td>2010</td>
-      <td>3175 / 93</td>
+      <td>206 / 96</td>
       <td>
         <code>N6[N3[42]]</code><br>
-        <code>86[0]|1[0]|2[0]|287[all]</code>
+        <code>1[0]|65[0]</code>
       </td>
       <td>
-        <a href="https://servicodados.ibge.gov.br/api/v3/agregados/3175/periodos/2010/variaveis/93?localidades=N6[N3[42]]&classificacao=86[0]|1[0]|2[0]|287[all]">Consultar API</a>
+        <a href="https://servicodados.ibge.gov.br/api/v3/agregados/206/periodos/2010/variaveis/96?localidades=N6[N3[42]]&classificacao=1[0]|65[0]" target="_blank" rel="noopener noreferrer">Consultar API</a>
       </td>
     </tr>
     <tr>
@@ -389,7 +389,7 @@ Investiga a estrutura etária, a evolução dos domicílios e a movimentação d
         <code>1[0]|65[0]</code>
       </td>
       <td>
-        <a href="https://servicodados.ibge.gov.br/api/v3/agregados/206/periodos/2000/variaveis/96?localidades=N6[N3[42]]&classificacao=1[0]|65[0]">Consultar API</a>
+        <a href="https://servicodados.ibge.gov.br/api/v3/agregados/206/periodos/2000/variaveis/96?localidades=N6[N3[42]]&classificacao=1[0]|65[0]" target="_blank" rel="noopener noreferrer">Consultar API</a>
       </td>
     </tr>
     <tr>
@@ -400,7 +400,7 @@ Investiga a estrutura etária, a evolução dos domicílios e a movimentação d
         <code>1[0]|65[0]</code>
       </td>
       <td>
-        <a href="https://servicodados.ibge.gov.br/api/v3/agregados/206/periodos/1991/variaveis/96?localidades=N6[N3[42]]&classificacao=1[0]|65[0]">Consultar API</a>
+        <a href="https://servicodados.ibge.gov.br/api/v3/agregados/206/periodos/1991/variaveis/96?localidades=N6[N3[42]]&classificacao=1[0]|65[0]" target="_blank" rel="noopener noreferrer">Consultar API</a>
       </td>
     </tr>
     <tr>
@@ -411,13 +411,13 @@ Investiga a estrutura etária, a evolução dos domicílios e a movimentação d
         <code>1[0]|65[0]</code>
       </td>
       <td>
-        <a href="https://servicodados.ibge.gov.br/api/v3/agregados/206/periodos/1980/variaveis/96?localidades=N6[N3[42]]&classificacao=1[0]|65[0]">Consultar API</a>
+        <a href="https://servicodados.ibge.gov.br/api/v3/agregados/206/periodos/1980/variaveis/96?localidades=N6[N3[42]]&classificacao=1[0]|65[0]" target="_blank" rel="noopener noreferrer">Consultar API</a>
       </td>
     </tr>
   </tbody>
 </table>
 
----
+
 
 <table>
   <thead>
