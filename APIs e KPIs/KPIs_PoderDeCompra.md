@@ -1,208 +1,40 @@
-<h1 align="center">KPIs — Poder de Compra</h1>
+# KPIs — Rendimento e ocupação
 
-<p align="center">
-  Indicadores de capacidade econômica e mercado de trabalho em Santa Catarina.
-</p>
+Atualizado em 04/11/2026. Os indicadores abaixo integram o índice com fontes corrigidas de 2022. O título histórico da pasta “Poder de Compra” não transforma rendimento nominal do trabalho em renda disponível ou poder de compra atual.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Área-Poder%20de%20Compra-1565C0?style=flat-square">
-  <img src="https://img.shields.io/badge/Fonte-IBGE%20Censo%20Demográfico-2E7D32?style=flat-square">
-  <img src="https://img.shields.io/badge/Granularidade-Município-607D8B?style=flat-square">
-</p>
+## Rendimento nominal mediano mensal do trabalho
 
----
+Fonte: [IBGE, agregado 10289, variável 13537, 2022](https://servicodados.ibge.gov.br/api/v3/agregados/10289/periodos/2022/variaveis/13537?localidades=N6%5BN3%5B42%5D%5D&classificacao=2%5B6794%5D%7C86%5B95251%5D). Classificações `2[6794]|86[95251]`.
 
-## Resumo da Avaliação
+Universo: pessoas de 14 anos ou mais ocupadas na semana de referência, **com rendimento de trabalho**. Mede o valor nominal mediano mensal de todos os trabalhos, em reais de 2022. A mediana divide a distribuição desse rendimento em duas partes; não é a média, nem renda domiciliar per capita, nem renda de toda a população.
 
-<table>
-  <tr>
-    <td align="center" width="33%">
-      <img src="https://img.icons8.com/fluency/96/money-bag.png" width="55" alt="Renda Mediana">
-      <h3>02. Renda Mediana</h3>
-      <p>Condição econômica típica do município.</p>
-      <strong>Peso: Quanto maior melhor</strong>
-    </td>
-    <td align="center" width="33%">
-      <img src="https://img.icons8.com/fluency/96/worker-male.png" width="55" alt="Taxa de Ocupação">
-      <h3>03. Taxa de Ocupação</h3>
-      <p>Participação no mercado de trabalho.</p>
-      <strong>Peso: Quanto maior melhor</strong>
-    </td>
-    <td align="center" width="33%">
-      <img src="https://img.icons8.com/fluency/96/groups.png" width="55" alt="População em Idade Ativa">
-      <h3>04. População em Idade Ativa</h3>
-      <p>Proporção da faixa etária ativa.</p>
-      <strong>Peso: Quanto mais melhor</strong>
-    </td>
-  </tr>
-</table>
+O valor oficial recebe score min–max direto: `100 × (rendimento − mínimo estadual) / (máximo estadual − mínimo estadual)`.
 
----
+**Peso de referência: 30% do índice total.** Maior rendimento recebe maior score por hipótese de capacidade econômica associada ao trabalho; não há validação causal de vendas de materiais de construção.
 
-<h2>02. Renda Mediana</h2>
+## Taxa de ocupação de pessoas de 14 anos ou mais
 
-<table>
-  <tr>
-    <td width="70%">
-      <h3>O que esse indicador mede?</h3>
-      O valor que divide a população em duas partes iguais:
-      metade possui renda inferior ao valor mediano e metade possui
-      renda superior.
-      <br><br>
-      <strong>Objetivo:</strong> avaliar a condição econômica típica
-      da população de cada município.
-    </td>
-    <td align="center" width="30%">
-      <img src="https://img.icons8.com/fluency/96/money-bag.png"
-           width="75" alt="Renda Mediana">
-      <br>
-      <strong>Poder de compra</strong>
-    </td>
-  </tr>
-</table>
+Fonte comum: IBGE, agregado 10268, 2022. Numerador: [variável 696, ocupados](https://servicodados.ibge.gov.br/api/v3/agregados/10268/periodos/2022/variaveis/696?localidades=N6%5BN3%5B42%5D%5D&classificacao=2%5B6794%5D%7C86%5B95251%5D%7C58%5B82072%5D). Denominador: [variável 140, população](https://servicodados.ibge.gov.br/api/v3/agregados/10268/periodos/2022/variaveis/140?localidades=N6%5BN3%5B42%5D%5D&classificacao=2%5B6794%5D%7C86%5B95251%5D%7C58%5B82072%5D).
 
-<h3>Por que utilizar?</h3>
+Ambos usam as mesmas classificações `2[6794]|86[95251]|58[82072]`. A categoria etária 82072 restringe o universo efetivo a **14 anos ou mais**, embora o nome geral das variáveis mencione 10 anos ou mais.
 
-A mediana sofre menos influência de rendas muito altas ou muito baixas
-do que a média. Isso ajuda a comparar a condição econômica típica
-dos municípios.
+```text
+Taxa de ocupação 14+ (%) = 100 × ocupados 14+ de 2022 / população 14+ de 2022
+Score = 100 × (taxa − mínimo estadual) / (máximo estadual − mínimo estadual)
+```
 
-<blockquote>
-  <strong>Área analisada:</strong> município individual.
-  <br>
-  <strong>Etapa futura:</strong> análise complementar da zona de
-  influência de até 20 km, sem substituir o indicador municipal.
-</blockquote>
+**Peso de referência: 10% do índice total.** Representa a proporção ocupada no grupo etário, sem restringir a vínculos CLT. Não mede taxa de formalização, não usa admissões CAGED como estoque de ocupados e não divide ocupados 14+ pela antiga população de 15–69 anos.
 
-<h3>Como será calculado?</h3>
+## Indicadores anteriores excluídos
 
-<table>
-  <tr>
-    <td align="center">
-      <strong>Renda Mediana</strong>
-      <br><br>
-      Valor central da distribuição de renda da população analisada.
-    </td>
-  </tr>
-</table>
+A proporção de população em idade ativa não integra o índice. O numerador antigo de 15–69 anos e os moradores do recorte de entorno não formam uma taxa municipal válida. A razão de dependência anterior também não recebe peso: é contexto demográfico com corte próprio, sem papel validado na decisão de expansão.
 
-<h3>Como entra na análise?</h3>
+O emprego formal geral de janeiro a agosto de 2026 não é combinado com essas fontes de 2022. Nenhuma fórmula utiliza períodos ou universos diferentes entre numerador e denominador.
 
-<ul>
-  <li>Será convertida em um score de 0 a 100.</li>
-  <li>Receberá o peso definido para o nível de Poder de Compra.</li>
-  <li>Quanto maior a renda mediana, maior o potencial econômico indicado.</li>
-</ul>
+## Pesos, qualidade e limites
 
-<hr>
+A referência usa 40% domicílios ocupados, 30% rendimento, 20% saturação invertida e 10% ocupação 14+. Os cenários alternativos, nessa ordem, são Pesos iguais (25/25/25/25), Ênfase mercado (50/25/15/10) e Menor saturação (30/25/35/10). São escolhas gerenciais, não estimativas de retorno.
 
-<h2>03. Taxa de Ocupação</h2>
+Os limites min–max permanecem fixos no universo estadual da versão validada. Sem valor válido ou sem variação, não se atribui score arbitrário. `X`, `..` e `...` são nulos; `-` é zero absoluto publicado, com bruto preservado. Os quatro componentes precisam estar disponíveis para gerar índice, sem redistribuição silenciosa dos pesos.
 
-<table>
-  <tr>
-    <td width="70%">
-      <h3>O que esse indicador mede?</h3>
-      A proporção da população em idade de trabalhar que está ocupada
-      no município.
-      <br><br>
-      <strong>Objetivo:</strong> entender a participação da população
-      no mercado de trabalho.
-    </td>
-    <td align="center" width="30%">
-      <img src="https://img.icons8.com/fluency/96/worker-male.png"
-           width="75" alt="Taxa de Ocupação">
-      <br>
-      <strong>Mercado de trabalho</strong>
-    </td>
-  </tr>
-</table>
-
-<h3>Por que utilizar?</h3>
-
-A renda mediana mostra a condição econômica típica, mas não revela
-sozinha quantas pessoas estão ocupadas. A taxa de ocupação complementa
-essa análise e ajuda a diferenciar municípios com rendas semelhantes,
-mas com diferentes níveis de participação no trabalho.
-
-<h3>Como será calculado?</h3>
-
-<table>
-  <tr>
-    <td align="center">
-      <strong>Taxa de Ocupação (%)</strong>
-      <br><br>
-      População Ocupada ÷ População em Idade de Trabalhar × 100
-    </td>
-  </tr>
-</table>
-
-<h3>Como entra na análise?</h3>
-
-<ul>
-  <li>Será convertida em um score de 0 a 100.</li>
-  <li>Receberá o peso definido para o nível de Poder de Compra.</li>
-  <li>O foco será a ocupação, sem separar inicialmente vínculos CLT ou PJ.</li>
-  <li>Quanto maior a taxa, maior a participação da população no mercado
-      de trabalho e, potencialmente, maior a capacidade econômica ativa.</li>
-</ul>
-
-<hr>
-
-<h2>04. População em Idade Ativa</h2>
-
-<table>
-  <tr>
-    <td width="70%">
-      <h3>O que esse indicador mede?</h3>
-      A proporção da população que está na faixa etária considerada
-      potencialmente ativa para participar do mercado de trabalho.
-      <br><br>
-      <strong>Objetivo:</strong> compreender a estrutura etária
-      de cada município.
-    </td>
-    <td align="center" width="30%">
-      <img src="https://img.icons8.com/fluency/96/groups.png"
-           width="75" alt="População em Idade Ativa">
-      <br>
-      <strong>Perfil demográfico</strong>
-    </td>
-  </tr>
-</table>
-
-<h3>Por que utilizar?</h3>
-
-Uma maior proporção de pessoas em idade ativa pode estar associada
-à geração de renda e à formação de novos domicílios.
-
-Entretanto, a idade não determina diretamente o comportamento
-de consumo de materiais de construção.
-
-<h3>Como será calculado?</h3>
-
-<table>
-  <tr>
-    <td align="center">
-      <strong>População em Idade Ativa (%)</strong>
-      <br><br>
-      População em Idade Ativa ÷ População Total × 100
-    </td>
-  </tr>
-</table>
-
-<h3>Como entra na análise?</h3>
-
-<ul>
-  <li>A utilização definitiva do indicador ainda será validada.</li>
-  <li>Se aprovado, será convertido em um score de 0 a 100.</li>
-  <li>Quanto maior a proporção, maior o potencial demográfico
-      associado à geração de renda.</li>
-</ul>
-
-<hr>
-
-<div align="center">
-  <img src="https://img.shields.io/badge/Projeto-Decisão%20Estratégica-1565C0?style=for-the-badge">
-  <p><strong>Dados para apoiar decisões de expansão.</strong></p>
-  <sub>KPIs de Poder de Compra | Em desenvolvimento</sub>
-</div>
-
+Consulte os [endpoints e metadados](APIs.md), a [metodologia](../docs/metodologia.md) e o [relatório](../docs/relatorio.md). Renda nominal e ocupação não substituem pesquisa de consumo, custos, margens ou estudo de viabilidade.

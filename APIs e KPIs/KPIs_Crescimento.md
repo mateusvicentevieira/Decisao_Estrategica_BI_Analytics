@@ -1,290 +1,34 @@
+# KPIs — Histórico disponível e crescimento excluído
 
-<h1 align="center">KPIs — Crescimento</h1>
+Atualizado em 04/11/2026. O índice final não contém um componente denominado “crescimento”. A documentação anterior previa indicadores cuja disponibilidade ou comparabilidade não foi confirmada. O histórico válido usado no painel é o de unidades locais varejistas, apresentado separadamente do índice de 2022.
 
-<p align="center">
-  Indicadores para avaliar a expansão demográfica e o dinamismo
-  do setor da construção nos municípios de Santa Catarina.
-</p>
+## Histórico comparável: unidades locais CNAE 47.4
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Área-Crescimento-1565C0?style=flat-square">
-  <img src="https://img.shields.io/badge/Granularidade-Município-607D8B?style=flat-square">
-  <img src="https://img.shields.io/badge/Status-Em%20desenvolvimento-blue?style=flat-square">
-</p>
+Fonte: IBGE/CEMPRE, agregado 9528, variável 706, classificação `12762[117452]`, grupo 47.4 do comércio varejista de material de construção. Endpoints: [2022](https://servicodados.ibge.gov.br/api/v3/agregados/9528/periodos/2022/variaveis/706?localidades=N6%5BN3%5B42%5D%5D&classificacao=12762%5B117452%5D), [2023](https://servicodados.ibge.gov.br/api/v3/agregados/9528/periodos/2023/variaveis/706?localidades=N6%5BN3%5B42%5D%5D&classificacao=12762%5B117452%5D) e [2024](https://servicodados.ibge.gov.br/api/v3/agregados/9528/periodos/2024/variaveis/706?localidades=N6%5BN3%5B42%5D%5D&classificacao=12762%5B117452%5D).
 
----
+A série mede quantidades de unidades locais por município, sem somar grupos a classes filhas. Sua evolução não mede crescimento de obras, faturamento, capacidade concorrencial ou demanda por materiais. O gráfico usa os anos observados. A nova série iniciada em 2022 não é concatenada à série CEMPRE encerrada em 2021.
 
-## Como o crescimento será avaliado?
+**Peso do histórico no índice: zero.** Somente as unidades locais de 2022 entram no cálculo da saturação de 2022: `10.000 × unidades locais / população residente do mesmo ano`. Não se usa a população de 2022 como denominador para 2023 ou 2024.
 
-<table>
-  <tr>
-    <td align="center" width="33%">
-      <img src="https://img.icons8.com/fluency/96/family.png"
-           width="55" alt="Razão de Dependência">
-      <h3>05. Razão de Dependência</h3>
-      <p>Relação entre a população dependente e a população em idade ativa.</p>
-      <strong>Menor é melhor</strong>
-    </td>
-    <td align="center" width="33%">
-      <img src="https://img.icons8.com/fluency/96/home.png"
-           width="55" alt="Crescimento de Domicílios">
-      <h3>06. Crescimento de Domicílios</h3>
-      <p>Variação da quantidade de domicílios ao longo do tempo.</p>
-      <strong>Maior é melhor</strong>
-    </td>
-    <td align="center" width="33%">
-      <img src="https://img.icons8.com/fluency/96/under-construction.png"
-           width="55" alt="Construção Civil">
-      <h3>07. Intensidade de Novas Construções</h3>
-      <p>Movimentação formal de empregos no setor da construção.</p>
-      <strong>Maior saldo é melhor</strong>
-    </td>
-  </tr>
-</table>
+## Indicadores excluídos e motivos
 
----
+| Indicador anterior | Estado no modelo atual | Motivo |
+|---|---|---|
+| Moradores 2022, agregado 6750/9598 | Substituído por população residente total 4709/93. | Recorte de setores da Pesquisa Urbanística do Entorno não representa total municipal. |
+| Domicílios 2022 do agregado 10053/9599 e crescimento histórico anterior | Fora do índice e do gráfico histórico. | O recorte de entorno de 2022 é incompatível com o universo das séries antigas; diferenças não comprovam crescimento ou queda de domicílios. |
+| Razão de dependência | Sem peso no índice. | Corte anterior de 0–14 e 70+ contra 15–69 é próprio e seu papel na atratividade de expansão não foi validado. |
+| Proporção em idade ativa | Fora do índice. | A população de 15–69 anos e os moradores do recorte de entorno não formam proporção municipal válida. |
+| CAGED disponível, janeiro–agosto/2026 | Fora do índice. | Coleta geral de SC, sem recorte setorial comprovado; oito meses não são 12 meses. Não mede novas construções. |
+| Soma antiga de empresas CEMPRE 6450 | Substituída pelo grupo exclusivo 47.4 do agregado 9528. | Misturava construção, atacado e varejo e somava categorias hierárquicas sobrepostas. |
 
-<h2>05. Razão de Dependência</h2>
+O CAGED setorial não foi recoletado nesta versão. O coletor contém uma função para selecionar seção F ou divisões CNAE 41/42/43 em eventual microdado futuro, mas a existência da função não significa que dados setoriais tenham sido baixados, carregados ou usados. Mesmo um saldo setorial válido seria proxy de emprego, não quantidade de obras.
 
-<table>
-  <tr>
-    <td width="70%">
-      <h3>O que esse indicador mede?</h3>
-      A relação entre a população potencialmente dependente
-      e a população em idade potencialmente ativa.
-      <br><br>
-      <strong>Objetivo:</strong> compreender a estrutura etária
-      de cada município.
-    </td>
-    <td align="center" width="30%">
-      <img src="https://img.icons8.com/fluency/96/family.png"
-           width="75" alt="Razão de Dependência">
-    </td>
-  </tr>
-</table>
+Não calcular a fórmula histórica `(valor atual − valor anterior) / valor anterior × 100` sobre os domicílios legados até comprovar universos, território e conceitos compatíveis. Os dados antigos e a normalização exploratória são preservados para auditoria e não devem ser reutilizados como fontes do modelo corrigido.
 
-<h3>Por que utilizar?</h3>
+## Composição efetivamente utilizada
 
-Uma proporção maior de crianças e idosos em relação à população
-em idade ativa pode indicar uma estrutura demográfica diferente.
-O indicador ajudará a contextualizar o perfil de cada município.
+O índice é uma média ponderada dos scores de 2022: domicílios particulares permanentes ocupados (40%), rendimento nominal mediano mensal do trabalho (30%), saturação de unidades locais por 10 mil habitantes em direção inversa (20%) e taxa de ocupação de pessoas de 14 anos ou mais (10%). Os limites min–max estaduais são fixos por versão.
 
-<h3>Como será calculado?</h3>
+Três cenários alternativos usam, nessa ordem de componentes, Pesos iguais (25/25/25/25), Ênfase mercado (50/25/15/10) e Menor saturação (30/25/35/10). Os cenários avaliam sensibilidade aos pesos; não alteram períodos nem adicionam o histórico ao índice. Os pesos são hipóteses gerenciais, sem validação causal de retorno.
 
-<table>
-  <tr>
-    <td align="center">
-      <strong>Razão de Dependência (%)</strong>
-      <br><br>
-      População Dependente ÷ População em Idade Ativa × 100
-    </td>
-  </tr>
-</table>
-
-<h3>Como entra na análise?</h3>
-
-<ul>
-  <li>Sua inclusão definitiva no modelo ainda será avaliada.</li>
-  <li>Se aprovado, será convertido em um score de 0 a 100.</li>
-  <li>A pontuação terá direção inversa: uma razão menor será
-      considerada mais favorável.</li>
-</ul>
-
-<table>
-  <tr>
-    <td width="30%"><strong>Fonte</strong></td>
-    <td>IBGE — Censo Demográfico</td>
-  </tr>
-  <tr>
-    <td><strong>Período</strong></td>
-    <td>2022</td>
-  </tr>
-  <tr>
-    <td><strong>Granularidade</strong></td>
-    <td>Município</td>
-  </tr>
-</table>
-
----
-
-<h2>06. Crescimento de Domicílios</h2>
-
-<table>
-  <tr>
-    <td width="70%">
-      <h3>O que esse indicador mede?</h3>
-      A variação percentual da quantidade de domicílios entre
-      dois períodos.
-      <br><br>
-      <strong>Objetivo:</strong> identificar municípios onde
-      o mercado residencial está se expandindo.
-    </td>
-    <td align="center" width="30%">
-      <img src="https://img.icons8.com/fluency/96/home.png"
-           width="75" alt="Crescimento de Domicílios">
-    </td>
-  </tr>
-</table>
-
-<h3>Por que utilizar?</h3>
-
-O crescimento de domicílios ajuda a identificar a expansão
-da demanda potencial por construção, reformas, acabamentos
-e manutenção.
-
-Diferentemente da quantidade total de domicílios, este indicador
-mostra como o mercado residencial mudou ao longo do tempo.
-
-<h3>Como será calculado?</h3>
-
-<table>
-  <tr>
-    <td align="center">
-      <strong>Crescimento de Domicílios (%)</strong>
-      <br><br>
-      (Domicílios do período atual − Domicílios do período anterior)
-      ÷ Domicílios do período anterior × 100
-    </td>
-  </tr>
-</table>
-
-<h3>Como entra na análise?</h3>
-
-<ul>
-  <li>Será convertido em um score de 0 a 100.</li>
-  <li>Receberá o peso definido para o nível de Crescimento.</li>
-  <li>Quanto maior o crescimento, maior o potencial de expansão
-      do mercado residencial.</li>
-</ul>
-
-<table>
-  <tr>
-    <td width="30%"><strong>Fonte</strong></td>
-    <td>IBGE — Censo Demográfico</td>
-  </tr>
-  <tr>
-    <td><strong>Período</strong></td>
-    <td>1980–2022</td>
-  </tr>
-  <tr>
-    <td><strong>Granularidade</strong></td>
-    <td>Município</td>
-  </tr>
-</table>
-
----
-
-<h2>07. Intensidade de Novas Construções</h2>
-
-<table>
-  <tr>
-    <td width="70%">
-      <h3>O que esse indicador mede?</h3>
-      O saldo de admissões e desligamentos formais no setor
-      da construção civil.
-      <br><br>
-      <strong>Objetivo:</strong> avaliar o dinamismo recente
-      do setor nos municípios.
-    </td>
-    <td align="center" width="30%">
-      <img src="https://img.icons8.com/fluency/96/under-construction.png"
-           width="75" alt="Construção Civil">
-    </td>
-  </tr>
-</table>
-
-<h3>Por que utilizar?</h3>
-
-O indicador busca aproximar a análise da atividade recente
-da construção civil.
-
-Enquanto a quantidade e o crescimento de domicílios mostram
-o tamanho e a expansão do mercado residencial, a movimentação
-de empregos ajuda a observar mudanças recentes na atividade formal.
-
-<strong>Atenção:</strong> o saldo de empregos é uma proxy do dinamismo
-do setor. Ele não mede diretamente a quantidade de obras, o volume
-de materiais consumidos ou o faturamento das empresas.
-
-<h3>Como será calculado?</h3>
-
-<table>
-  <tr>
-    <td align="center">
-      <strong>Saldo de Empregos da Construção Civil</strong>
-      <br><br>
-      Admissões formais − Desligamentos formais
-      <br><br>
-      <sub>Filtro previsto: Seção F da CNAE 2.0.</sub>
-    </td>
-  </tr>
-</table>
-
-<h3>Como entra na análise?</h3>
-
-<ul>
-  <li>Serão considerados os últimos 12 meses disponíveis.</li>
-  <li>O saldo municipal será convertido em score de 0 a 100
-      por normalização Min-Max.</li>
-  <li>O score será utilizado conforme o peso definido para
-      o nível de Crescimento.</li>
-  <li>Um saldo maior será considerado mais favorável dentro
-      deste indicador.</li>
-</ul>
-
-<table>
-  <tr>
-    <td width="30%"><strong>Fonte</strong></td>
-    <td>Ministério do Trabalho e Emprego (MTE) — PDET / Novo CAGED</td>
-  </tr>
-  <tr>
-    <td><strong>Período</strong></td>
-    <td>Acumulado dos últimos 12 meses disponíveis</td>
-  </tr>
-  <tr>
-    <td><strong>Classificação</strong></td>
-    <td>CNAE 2.0 — Seção F: Construção</td>
-  </tr>
-  <tr>
-    <td><strong>Granularidade</strong></td>
-    <td>Município</td>
-  </tr>
-</table>
-
----
-
-<h2>Como os indicadores serão utilizados?</h2>
-
-<table>
-  <tr>
-    <td align="center" width="33%">
-      <img src="https://img.icons8.com/fluency/96/database.png"
-           width="50" alt="Coleta de dados">
-      <h3>1. Coleta</h3>
-      <p>Reunir dados demográficos e do mercado de trabalho.</p>
-    </td>
-    <td align="center" width="33%">
-      <img src="https://img.icons8.com/fluency/96/combo-chart.png"
-           width="50" alt="Pontuação">
-      <h3>2. Pontuação</h3>
-      <p>Padronizar os indicadores em scores de 0 a 100,
-      respeitando a direção de cada KPI.</p>
-    </td>
-    <td align="center" width="33%">
-      <img src="https://img.icons8.com/fluency/96/graph.png"
-           width="50" alt="Comparação">
-      <h3>3. Comparação</h3>
-      <p>Comparar os municípios e avaliar seu potencial de crescimento.</p>
-    </td>
-  </tr>
-</table>
-
----
-
-<div align="center">
-  <img src="https://img.shields.io/badge/Projeto-Decisão%20Estratégica-1565C0?style=for-the-badge">
-  <p><strong>Dados para apoiar decisões de expansão.</strong></p>
-  <sub>KPIs de Crescimento | Em desenvolvimento</sub>
-</div>
-```
-
+Ausência permanece nula, sem interpolação ou conversão automática em zero. O marcador oficial `-` é zero absoluto publicado; `X`, `..` e `...` são nulos. Consulte as [fontes oficiais completas](APIs.md), a [metodologia](../docs/metodologia.md) e os [resultados e limitações](../docs/relatorio.md). Obras novas, alvarás, logística e viabilidade financeira permanecem fora da base.

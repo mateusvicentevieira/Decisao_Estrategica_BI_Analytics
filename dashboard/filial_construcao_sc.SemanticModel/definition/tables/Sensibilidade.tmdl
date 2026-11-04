@@ -1,0 +1,49 @@
+table Sensibilidade
+	lineageTag: ac6b4cd5-d82b-5360-b9a7-3b10d691cf66
+
+	column cenario
+		dataType: string
+		lineageTag: 3e0e9b0e-2079-47bd-8272-04cd5ed3228f
+		summarizeBy: none
+		sourceColumn: cenario
+
+	column posicao
+		dataType: int64
+		formatString: 0
+		lineageTag: befc738a-921f-44b7-a7ff-a4c5836bb831
+		summarizeBy: none
+		sourceColumn: posicao
+
+	column municipio
+		dataType: string
+		lineageTag: 28b08025-5f75-4cd0-81ee-53a864b5de59
+		summarizeBy: none
+		sourceColumn: municipio
+
+	column indice
+		dataType: double
+		formatString: 0.0
+		lineageTag: 9fd3e35d-31f7-4d7f-90b2-81076a9963f2
+		summarizeBy: none
+		sourceColumn: indice
+
+	partition Sensibilidade = m
+		mode: import
+		source =
+				let
+					Fonte = #table(type table [cenario = text, posicao = Int64.Type, municipio = text, indice = number], {
+						{"Referência", 1, "Florianópolis", 90.14865214764502},
+						{"Referência", 2, "Joinville", 77.46847652703043},
+						{"Referência", 3, "Blumenau", 67.44626833164119},
+						{"Pesos iguais", 1, "Florianópolis", 83.99307246819497},
+						{"Pesos iguais", 2, "Joinville", 72.82939271414803},
+						{"Pesos iguais", 3, "Blumenau", 69.52750959322739},
+						{"Ênfase mercado", 1, "Florianópolis", 91.62168371859505},
+						{"Ênfase mercado", 2, "Joinville", 81.34262239918598},
+						{"Ênfase mercado", 3, "Blumenau", 66.66775951242037},
+						{"Menor saturação", 1, "Florianópolis", 85.5285519557018},
+						{"Menor saturação", 2, "Joinville", 73.67601653919911},
+						{"Menor saturação", 3, "Blumenau", 67.72450292764023}
+					})
+				in
+					Fonte

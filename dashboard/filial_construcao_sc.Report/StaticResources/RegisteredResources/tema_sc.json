@@ -1,0 +1,21 @@
+{
+  "name": "SC Bege e Laranja",
+  "dataColors": [
+    "#B85016",
+    "#F3CEAC",
+    "#685B50"
+  ],
+  "background": "#F7F2E9",
+  "foreground": "#392D25",
+  "tableAccent": "#B85016",
+  "textClasses": {
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 12
+    },
+    "title": {
+      "fontFace": "Segoe UI",
+      "fontSize": 16
+    }
+  }
+}

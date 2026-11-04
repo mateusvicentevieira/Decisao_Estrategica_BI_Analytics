@@ -1,0 +1,11 @@
+relationship a06d5f18-f963-5ebb-8e16-21dad8c388a5
+	fromColumn: Fato2022.id_municipio
+	toColumn: Municipio.id_municipio
+
+relationship a6f43972-c83e-5e7a-9b7d-04e0dff82d0c
+	fromColumn: Contexto.id_municipio
+	toColumn: Municipio.id_municipio
+
+relationship 8347bb30-fa91-50b6-90e4-912bb0323274
+	fromColumn: Historico.id_municipio
+	toColumn: Municipio.id_municipio

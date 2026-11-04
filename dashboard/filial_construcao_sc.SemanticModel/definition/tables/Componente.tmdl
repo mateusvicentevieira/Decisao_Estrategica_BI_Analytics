@@ -1,0 +1,21 @@
+table Componente
+	lineageTag: 1107752c-f238-53c3-9346-3432b9b37f5f
+
+	column componente
+		dataType: string
+		lineageTag: e18213c5-4d08-4097-a35b-c091b49c40a4
+		summarizeBy: none
+		sourceColumn: componente
+
+	partition Componente = m
+		mode: import
+		source =
+				let
+					Fonte = #table(type table [componente = text], {
+						{"Mercado residencial"},
+						{"Rendimento do trabalho"},
+						{"Menor saturação"},
+						{"Ocupação 14+"}
+					})
+				in
+					Fonte

@@ -1,0 +1,113 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 571.228385939823,
+            "y": 191.58745205957166
+          },
+          "nodeIndex": "Cenario",
+          "nodeLineageTag": "6968b361-152f-5556-abd8-cd3d79b4fe4a",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 855.228385939823,
+            "y": 239.58745205957166
+          },
+          "nodeIndex": "Componente",
+          "nodeLineageTag": "1107752c-f238-53c3-9346-3432b9b37f5f",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": -50
+          },
+          "nodeIndex": "Contexto",
+          "nodeLineageTag": "28031798-17ca-59f5-922a-f139677bc2c5",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 337.22838593982306,
+            "y": 99.9061676814448
+          },
+          "nodeIndex": "Fato2022",
+          "nodeLineageTag": "7bf65631-9ac1-520e-b513-7298d8545133",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50.051912497132093,
+            "y": 381.17490411914332
+          },
+          "nodeIndex": "Historico",
+          "nodeLineageTag": "33257601-bee3-549a-82a0-5744dc6f53d4",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50.172517391001975,
+            "y": 201.54349347652544
+          },
+          "nodeIndex": "Municipio",
+          "nodeLineageTag": "361266d0-3737-5ee3-bc53-d9f764789944",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1139.2283859398231,
+            "y": 203.58745205957166
+          },
+          "nodeIndex": "Sensibilidade",
+          "nodeLineageTag": "ac6b4cd5-d82b-5360-b9a7-3b10d691cf66",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

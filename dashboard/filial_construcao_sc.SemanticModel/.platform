@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "filial_construcao_sc"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d49c43a6-7d3f-42bd-99fa-bc5a12c800f1"
+  }
+}

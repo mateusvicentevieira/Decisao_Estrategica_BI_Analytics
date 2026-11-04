@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "filial_construcao_sc"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3d5a8965-4607-441d-8021-1641493b2fac"
+  }
+}

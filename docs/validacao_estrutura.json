@@ -1,0 +1,84 @@
+{
+  "data": "2026-11-04",
+  "modo": "compatibilidade_explicita",
+  "arquivos_validados": 34,
+  "contagens": {
+    "schema_declarado": 21,
+    "compatibilidade_publica": 10,
+    "schema_publico_por_extensao": 3
+  },
+  "compatibilidade_somente_em_memoria": [
+    {
+      "arquivo": "dashboard/filial_construcao_sc.Report/definition/pages/analise_municipio/visuals/cenario_sincronizado/visual.json",
+      "schema_declarado": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+      "schema_validacao": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json"
+    },
+    {
+      "arquivo": "dashboard/filial_construcao_sc.Report/definition/pages/analise_municipio/visuals/componentes/visual.json",
+      "schema_declarado": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+      "schema_validacao": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json"
+    },
+    {
+      "arquivo": "dashboard/filial_construcao_sc.Report/definition/pages/analise_municipio/visuals/historico/visual.json",
+      "schema_declarado": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+      "schema_validacao": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json"
+    },
+    {
+      "arquivo": "dashboard/filial_construcao_sc.Report/definition/pages/analise_municipio/visuals/municipio/visual.json",
+      "schema_declarado": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+      "schema_validacao": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json"
+    },
+    {
+      "arquivo": "dashboard/filial_construcao_sc.Report/definition/pages/analise_municipio/visuals/navegacao/visual.json",
+      "schema_declarado": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+      "schema_validacao": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json"
+    },
+    {
+      "arquivo": "dashboard/filial_construcao_sc.Report/definition/pages/analise_municipio/visuals/populacao/visual.json",
+      "schema_declarado": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+      "schema_validacao": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json"
+    },
+    {
+      "arquivo": "dashboard/filial_construcao_sc.Report/definition/pages/visao_geral/visuals/cenario/visual.json",
+      "schema_declarado": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+      "schema_validacao": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json"
+    },
+    {
+      "arquivo": "dashboard/filial_construcao_sc.Report/definition/pages/visao_geral/visuals/navegacao/visual.json",
+      "schema_declarado": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+      "schema_validacao": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json"
+    },
+    {
+      "arquivo": "dashboard/filial_construcao_sc.Report/definition/pages/visao_geral/visuals/ranking/visual.json",
+      "schema_declarado": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+      "schema_validacao": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json"
+    },
+    {
+      "arquivo": "dashboard/filial_construcao_sc.Report/definition/pages/visao_geral/visuals/veredito/visual.json",
+      "schema_declarado": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+      "schema_validacao": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json"
+    }
+  ],
+  "schemas_inferidos_por_extensao": [
+    {
+      "arquivo": "dashboard/filial_construcao_sc.pbip",
+      "schema_validacao": "https://developer.microsoft.com/json-schemas/fabric/pbip/pbipProperties/1.0.0/schema.json"
+    },
+    {
+      "arquivo": "dashboard/filial_construcao_sc.Report/definition.pbir",
+      "schema_validacao": "https://developer.microsoft.com/json-schemas/fabric/item/report/definitionProperties/2.0.0/schema.json"
+    },
+    {
+      "arquivo": "dashboard/filial_construcao_sc.SemanticModel/definition.pbism",
+      "schema_validacao": "https://developer.microsoft.com/json-schemas/fabric/item/semanticModel/definitionProperties/1.0.0/schema.json"
+    }
+  ],
+  "arquivos_sem_schema_nao_validados": [
+    "dashboard/dados_snapshot.json",
+    "dashboard/filial_construcao_sc.Report/StaticResources/RegisteredResources/tema_sc.json",
+    "dashboard/filial_construcao_sc.SemanticModel/diagramLayout.json",
+    "dashboard/resultados.json"
+  ],
+  "falhas": [],
+  "observacao": "Compatibilidade pública não comprova o schema nativo indisponível. Nenhum arquivo do projeto é alterado; nenhuma propriedade é removida para validar."
+}

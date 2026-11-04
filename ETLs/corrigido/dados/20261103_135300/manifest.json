@@ -1,0 +1,105 @@
+{
+  "versao": "20261103_135300",
+  "coletado_em": "2026-11-03T13:53:02.353607+00:00",
+  "municipios": 295,
+  "fontes": [
+    {
+      "kpi": "populacao",
+      "periodo": "2022",
+      "fonte": "https://servicodados.ibge.gov.br/api/v3/agregados/4709/periodos/2022/variaveis/93?localidades=N6[N3[42]]",
+      "universo": "População residente total",
+      "unidade": "Pessoas",
+      "variavel_nome": "População residente",
+      "cobertura": 295,
+      "valores_validos": 295,
+      "sha256": "5e7497ec9079c725d20284141ceb416eccb063868c143c69ce2a05abf3354a81"
+    },
+    {
+      "kpi": "domicilios",
+      "periodo": "2022",
+      "fonte": "https://servicodados.ibge.gov.br/api/v3/agregados/4712/periodos/2022/variaveis/381?localidades=N6[N3[42]]",
+      "universo": "Domicílios particulares permanentes ocupados",
+      "unidade": "Domicílios",
+      "variavel_nome": "Domicílios particulares permanentes ocupados",
+      "cobertura": 295,
+      "valores_validos": 295,
+      "sha256": "65b4bfd62301bf95de71d2d6713ee17737b8ba7d83b0163a99f826e3f8060883"
+    },
+    {
+      "kpi": "renda",
+      "periodo": "2022",
+      "fonte": "https://servicodados.ibge.gov.br/api/v3/agregados/10289/periodos/2022/variaveis/13537?localidades=N6[N3[42]]&classificacao=2[6794]|86[95251]",
+      "universo": "Rendimento nominal mediano mensal de todos os trabalhos; ocupados de 14 anos ou mais com rendimento de trabalho",
+      "unidade": "Reais",
+      "variavel_nome": "Valor do rendimento nominal mediano mensal de todos os trabalhos das pessoas de 14 anos ou mais de idade, ocupadas na semana de referência, com rendimento de trabalho",
+      "cobertura": 295,
+      "valores_validos": 295,
+      "sha256": "7e6ebbd265331bbff631e6582a79c96a93f2f2dcce7bcebf159ff0bb39d5f42d"
+    },
+    {
+      "kpi": "ocupados",
+      "periodo": "2022",
+      "fonte": "https://servicodados.ibge.gov.br/api/v3/agregados/10268/periodos/2022/variaveis/696?localidades=N6[N3[42]]&classificacao=2[6794]|86[95251]|58[82072]",
+      "universo": "Pessoas de 14 anos ou mais ocupadas na semana de referência",
+      "unidade": "Pessoas",
+      "variavel_nome": "Pessoas de 10 anos ou mais de idade ocupadas na semana de referência",
+      "cobertura": 295,
+      "valores_validos": 295,
+      "sha256": "3c4c7fae6ccbc77c50411129df068be95ea978632363f9367d85d16353e3b986"
+    },
+    {
+      "kpi": "populacao_14mais",
+      "periodo": "2022",
+      "fonte": "https://servicodados.ibge.gov.br/api/v3/agregados/10268/periodos/2022/variaveis/140?localidades=N6[N3[42]]&classificacao=2[6794]|86[95251]|58[82072]",
+      "universo": "Pessoas de 14 anos ou mais; mesmo universo de ocupados",
+      "unidade": "Pessoas",
+      "variavel_nome": "Pessoas de 10 anos ou mais de idade",
+      "cobertura": 295,
+      "valores_validos": 295,
+      "sha256": "4352df5286ab637ddd84506ae9d5dfa62cae8d7cc71d4e5b839e827cb8a20360"
+    },
+    {
+      "kpi": "concorrentes",
+      "periodo": "2022",
+      "fonte": "https://servicodados.ibge.gov.br/api/v3/agregados/9528/periodos/2022/variaveis/706?localidades=N6[N3[42]]&classificacao=12762[117452]",
+      "universo": "Unidades locais; CNAE grupo 47.4 comércio varejista de material de construção; agregado exclusivo",
+      "unidade": "Unidades",
+      "variavel_nome": "Número de unidades locais",
+      "cobertura": 295,
+      "valores_validos": 295,
+      "sha256": "13269f1618c2c68174be7a58d9a5ae3ffedff9bece83c8a7ed2b7ba5258b908d"
+    },
+    {
+      "kpi": "concorrentes",
+      "periodo": "2023",
+      "fonte": "https://servicodados.ibge.gov.br/api/v3/agregados/9528/periodos/2023/variaveis/706?localidades=N6[N3[42]]&classificacao=12762[117452]",
+      "universo": "Unidades locais; CNAE grupo 47.4 comércio varejista de material de construção; agregado exclusivo",
+      "unidade": "Unidades",
+      "variavel_nome": "Número de unidades locais",
+      "cobertura": 295,
+      "valores_validos": 295,
+      "sha256": "a6dd97848f3ce0fcb972ec40fc2ea7b20a52aa713b47cf9410df0f631b6f3f68"
+    },
+    {
+      "kpi": "concorrentes",
+      "periodo": "2024",
+      "fonte": "https://servicodados.ibge.gov.br/api/v3/agregados/9528/periodos/2024/variaveis/706?localidades=N6[N3[42]]&classificacao=12762[117452]",
+      "universo": "Unidades locais; CNAE grupo 47.4 comércio varejista de material de construção; agregado exclusivo",
+      "unidade": "Unidades",
+      "variavel_nome": "Número de unidades locais",
+      "cobertura": 295,
+      "valores_validos": 295,
+      "sha256": "8ed076d4f15ac7923048112ad1366f6c5dfa5792582bd528f70eff5fdfbf9f08"
+    }
+  ],
+  "limitacoes": [
+    "Concorrência é proxy de unidades locais do grupo CNAE 47.4; não identifica redes nem capacidades comerciais.",
+    "CEMPRE 2022 inicia nova série; não comparar diretamente com série encerrada em 2021.",
+    "Renda nominal de 2022 não equivale a renda domiciliar per capita nem renda atual.",
+    "CAGED public contém todos setores; não foi incluído nem recolhido por demandar grandes microdados.",
+    "Histórico antigo de domicílios em public não é utilizado por incompatibilidade de universo.",
+    "Símbolos de ausência ou supressão X/../... são NULL; hífen representa zero absoluto publicado conforme convenção IBGE/SIDRA. Valor bruto preservado.",
+    "Legenda oficial: https://www.ibge.gov.br/explica/producao-agropecuaria/pa (sinais convencionais IBGE)."
+  ],
+  "tabela": "bi_validado.fontes_20261103_135300"
+}

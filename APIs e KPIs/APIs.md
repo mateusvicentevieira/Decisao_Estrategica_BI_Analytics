@@ -1,481 +1,51 @@
+# Fontes oficiais e APIs — versão corrigida
 
-<div align="center">
+Atualizado em 04/11/2026. Esta documentação descreve as fontes efetivamente usadas pelo coletor corrigido e pelo índice. As consultas e definições antigas foram substituídas; não reutilizar seus valores ou scores no modelo atual.
 
-# Fontes de Dados e APIs
+## Coleta e rastreabilidade
 
-Documentação das fontes utilizadas para avaliar municípios de Santa Catarina na escolha estratégica de uma nova filial.
+O coletor [ETLs/corrigido/coletor.py](../ETLs/corrigido/coletor.py) consulta municípios de Santa Catarina por código IBGE e grava dados em versões independentes de `bi_validado`, preservando as tabelas anteriores. A versão usada no relatório é `bi_validado.fontes_20261103_135300`: oito séries × 295 municípios, total de 2.360 registros. Respostas oficiais, metadados, valores brutos, URLs e hashes SHA-256 são preservados por execução.
 
-<img src="https://img.shields.io/badge/Dados-IBGE-blue?style=for-the-badge" alt="IBGE">
-<img src="https://img.shields.io/badge/Emprego-Novo%20CAGED-orange?style=for-the-badge" alt="Novo CAGED">
-<img src="https://img.shields.io/badge/Estado-Santa%20Catarina-green?style=for-the-badge" alt="Santa Catarina">
+O [cadastro municipal oficial](https://servicodados.ibge.gov.br/api/v1/localidades/estados/42/municipios) define os 295 municípios esperados. Nas consultas de agregados, `localidades=N6[N3[42]]` seleciona o nível municipal de SC.
 
-</div>
+## Fontes utilizadas
 
----
+| Série | Ano | Agregado / variável | Unidade e universo |
+|---|---|---|---|
+| População residente | 2022 | 4709 / 93 | Pessoas; população residente total. |
+| Domicílios | 2022 | 4712 / 381 | Domicílios particulares permanentes ocupados. |
+| Rendimento mediano | 2022 | 10289 / 13537 | Reais; rendimento nominal mediano mensal de todos os trabalhos dos ocupados de 14 anos ou mais com rendimento de trabalho. |
+| Ocupados 14+ | 2022 | 10268 / 696 | Pessoas de 14 anos ou mais ocupadas na semana de referência. |
+| População 14+ | 2022 | 10268 / 140 | Pessoas de 14 anos ou mais; denominador no mesmo universo dos ocupados. |
+| Unidades locais CNAE 47.4 | 2022, 2023 e 2024 | 9528 / 706 | Unidades locais do comércio varejista de material de construção, grupo 47.4. |
 
-## 1. Mercado
+Endpoints exatos em termos de seleção, com caracteres de consulta codificados nos links:
 
-Avalia o tamanho do mercado consumidor e a presença de empresas relacionadas ao setor de construção.
+- [População residente 2022](https://servicodados.ibge.gov.br/api/v3/agregados/4709/periodos/2022/variaveis/93?localidades=N6%5BN3%5B42%5D%5D). Sem classificação adicional. [Metadados 4709](https://servicodados.ibge.gov.br/api/v3/agregados/4709/metadados).
+- [Domicílios ocupados 2022](https://servicodados.ibge.gov.br/api/v3/agregados/4712/periodos/2022/variaveis/381?localidades=N6%5BN3%5B42%5D%5D). Sem classificação adicional. [Metadados 4712](https://servicodados.ibge.gov.br/api/v3/agregados/4712/metadados).
+- [Rendimento mediano 2022](https://servicodados.ibge.gov.br/api/v3/agregados/10289/periodos/2022/variaveis/13537?localidades=N6%5BN3%5B42%5D%5D&classificacao=2%5B6794%5D%7C86%5B95251%5D). Classificação `2[6794]|86[95251]`. [Metadados 10289](https://servicodados.ibge.gov.br/api/v3/agregados/10289/metadados).
+- [Ocupados 14+ em 2022](https://servicodados.ibge.gov.br/api/v3/agregados/10268/periodos/2022/variaveis/696?localidades=N6%5BN3%5B42%5D%5D&classificacao=2%5B6794%5D%7C86%5B95251%5D%7C58%5B82072%5D) e [população 14+ em 2022](https://servicodados.ibge.gov.br/api/v3/agregados/10268/periodos/2022/variaveis/140?localidades=N6%5BN3%5B42%5D%5D&classificacao=2%5B6794%5D%7C86%5B95251%5D%7C58%5B82072%5D). Mesmas classificações `2[6794]|86[95251]|58[82072]`; categoria 82072 restringe a 14 anos ou mais. O nome geral das variáveis menciona 10 anos ou mais, mas a categoria selecionada define o universo efetivo. [Metadados 10268](https://servicodados.ibge.gov.br/api/v3/agregados/10268/metadados).
+- Unidades locais varejistas: [2022](https://servicodados.ibge.gov.br/api/v3/agregados/9528/periodos/2022/variaveis/706?localidades=N6%5BN3%5B42%5D%5D&classificacao=12762%5B117452%5D), [2023](https://servicodados.ibge.gov.br/api/v3/agregados/9528/periodos/2023/variaveis/706?localidades=N6%5BN3%5B42%5D%5D&classificacao=12762%5B117452%5D) e [2024](https://servicodados.ibge.gov.br/api/v3/agregados/9528/periodos/2024/variaveis/706?localidades=N6%5BN3%5B42%5D%5D&classificacao=12762%5B117452%5D). Classificação `12762[117452]`: grupo CNAE 47.4, consultado uma única vez sem somar classes filhas. [Metadados 9528](https://servicodados.ibge.gov.br/api/v3/agregados/9528/metadados).
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="2">KPI 01 — Quantidade de Moradores</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Fonte</strong></td>
-      <td>IBGE — Censo Demográfico</td>
-    </tr>
-    <tr>
-      <td><strong>Período</strong></td>
-      <td>2022</td>
-    </tr>
-    <tr>
-      <td><strong>Nível</strong></td>
-      <td>Municipal</td>
-    </tr>
-    <tr>
-      <td><strong>Agregado / Variável</strong></td>
-      <td>6750 / 9598</td>
-    </tr>
-    <tr>
-      <td><strong>Filtros</strong></td>
-      <td>
-        Localidades: <code>N6[N3[42]]</code><br>
-        Classificação: <code>2[6794]|86[95251]|14[200]</code>
-      </td>
-    </tr>
-    <tr>
-      <td><strong>Endpoint</strong></td>
-      <td>
-        <a href="https://servicodados.ibge.gov.br/api/v3/agregados/6750/periodos/2022/variaveis/9598?localidades=N6[N3[42]]&classificacao=2[6794]|86[95251]|14[200]">Consultar API do IBGE</a>
-      </td>
-    </tr>
-    <tr>
-      <td><strong>Objetivo</strong></td>
-      <td>Mensurar a população municipal como indicador do mercado consumidor potencial.</td>
-    </tr>
-  </tbody>
-</table>
+## Índice e períodos
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="2">KPI 02 — Quantidade de Domicílios</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Fonte</strong></td>
-      <td>IBGE</td>
-    </tr>
-    <tr>
-      <td><strong>Período</strong></td>
-      <td>2022</td>
-    </tr>
-    <tr>
-      <td><strong>Nível</strong></td>
-      <td>Municipal</td>
-    </tr>
-    <tr>
-      <td><strong>Agregado / Variável</strong></td>
-      <td>6326 / 381</td>
-    </tr>
-    <tr>
-      <td><strong>Filtros</strong></td>
-      <td>
-        Localidades: <code>N3[42]|N6[N3[42]]</code><br>
-        Classificação: <code>125[2932]</code>
-      </td>
-    </tr>
-    <tr>
-      <td><strong>Endpoint</strong></td>
-      <td>
-        <a href="https://servicodados.ibge.gov.br/api/v3/agregados/6326/periodos/2022/variaveis/381?localidades=N3[42]|N6[N3[42]]&classificacao=125[2932]">Consultar API do IBGE</a>
-      </td>
-    </tr>
-    <tr>
-      <td><strong>Objetivo</strong></td>
-      <td>Estimar o mercado residencial potencial, considerando cada domicílio como uma possível unidade de demanda.</td>
-    </tr>
-  </tbody>
-</table>
+O índice combina somente 2022: 40% score de domicílios ocupados + 30% score de rendimento + 20% score inverso de saturação + 10% score de ocupação 14+. A saturação é `10.000 × unidades locais / população residente`; a taxa de ocupação é `100 × ocupados 14+ / população 14+`. Numeradores e denominadores pertencem a 2022 e a universos compatíveis.
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="2">KPI 03 — Empresas no Setor de Construção</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Fonte</strong></td>
-      <td>IBGE</td>
-    </tr>
-    <tr>
-      <td><strong>Período</strong></td>
-      <td>2021</td>
-    </tr>
-    <tr>
-      <td><strong>Nível</strong></td>
-      <td>Municipal</td>
-    </tr>
-    <tr>
-      <td><strong>Agregado / Variável</strong></td>
-      <td>6450 / 706</td>
-    </tr>
-    <tr>
-      <td><strong>Filtros</strong></td>
-      <td>
-        Localidades: <code>N6[N3[42]]</code><br>
-        Classificação: <code>12762[117329,117330,117419,117420,117421,117422,117423,117424,117452,117453,117454,117455,117456]</code>
-      </td>
-    </tr>
-    <tr>
-      <td><strong>Endpoint</strong></td>
-      <td>
-        <a href="https://servicodados.ibge.gov.br/api/v3/agregados/6450/periodos/2021/variaveis/706?localidades=N6[N3[42]]&classificacao=12762[117329,117330,117419,117420,117421,117422,117423,117424,117452,117453,117454,117455,117456]">Consultar API do IBGE</a>
-      </td>
-    </tr>
-    <tr>
-      <td><strong>Tratamento</strong></td>
-      <td>Separar as categorias retornadas individualmente no SQL e somá-las posteriormente, evitando misturar os valores antes da validação.</td>
-    </tr>
-  </tbody>
-</table>
+O min–max usa limites fixos dos 295 municípios da versão. Sem variação ou componente ausente, não se atribui score arbitrário nem se redistribuem pesos. Os pesos são hipóteses gerenciais, sem calibração por retorno financeiro.
 
----
+| Cenário | Domicílios | Rendimento | Saturação invertida | Ocupação 14+ |
+|---|---:|---:|---:|---:|
+| Referência | 40% | 30% | 20% | 10% |
+| Pesos iguais | 25% | 25% | 25% | 25% |
+| Ênfase mercado | 50% | 25% | 15% | 10% |
+| Menor saturação | 30% | 25% | 35% | 10% |
 
-## 2. Poder de Compra
+As quantidades de unidades locais de 2022–2024 formam histórico separado. Não se usa população de 2022 como denominador em 2023/2024. A série CEMPRE iniciada em 2022 não é concatenada à série antiga encerrada em 2021.
 
-Analisa a renda e a participação da população no mercado de trabalho, além do contingente em idade ativa.
+## Qualidade e fontes excluídas
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="2">KPI 04 — Rendimento Mediano</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Fonte</strong></td>
-      <td>IBGE</td>
-    </tr>
-    <tr>
-      <td><strong>Período</strong></td>
-      <td>2022</td>
-    </tr>
-    <tr>
-      <td><strong>Nível</strong></td>
-      <td>Municipal</td>
-    </tr>
-    <tr>
-      <td><strong>Agregado / Variável</strong></td>
-      <td>10289 / 13537</td>
-    </tr>
-    <tr>
-      <td><strong>Filtros</strong></td>
-      <td>
-        Localidades: <code>N6[N3[42]]</code><br>
-        Classificação: <code>2[6794]|86[95251]</code>
-      </td>
-    </tr>
-    <tr>
-      <td><strong>Endpoint</strong></td>
-      <td>
-        <a href="https://servicodados.ibge.gov.br/api/v3/agregados/10289/periodos/2022/variaveis/13537?localidades=N6[N3[42]]&classificacao=2[6794]|86[95251]">Consultar API do IBGE</a>
-      </td>
-    </tr>
-    <tr>
-      <td><strong>Objetivo</strong></td>
-      <td>Avaliar a condição econômica típica do município por meio do rendimento mediano.</td>
-    </tr>
-  </tbody>
-</table>
+O marcador oficial `-` significa zero absoluto publicado e é convertido em zero com preservação do bruto. `X`, `..` e `...` ficam nulos. Ausência não é imputada. O coletor confere cobertura e chaves municipais antes da carga.
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="2">KPI 05 — Taxa de Ocupação</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Fonte</strong></td>
-      <td>IBGE — dados de moradores e população em idade ativa</td>
-    </tr>
-    <tr>
-      <td><strong>Período</strong></td>
-      <td>2022</td>
-    </tr>
-    <tr>
-      <td><strong>Nível</strong></td>
-      <td>Municipal</td>
-    </tr>
-    <tr>
-      <td><strong>Cálculo</strong></td>
-      <td>
-        <code>(População ocupada / População em idade ativa) × 100</code>
-      </td>
-    </tr>
-    <tr>
-      <td><strong>Tratamento</strong></td>
-      <td>Somar as faixas etárias necessárias antes de carregar os dados para o banco de dados.</td>
-    </tr>
-    <tr>
-      <td><strong>Observação</strong></td>
-      <td>O cálculo depende de uma medida de população ocupada compatível com o período e o universo da população em idade ativa.</td>
-    </tr>
-  </tbody>
-</table>
+As fontes antigas de moradores 6750/9598 e domicílios 2022 10053/9599 cobrem recortes da Pesquisa Urbanística do Entorno, não totais municipais. O histórico antigo de domicílios, a soma sobreposta de categorias do CEMPRE, a proporção ativa/dependência anterior e o CAGED geral não entram no índice. Motivos em [KPIs de crescimento](KPIs_Crescimento.md) e no [diagnóstico](../docs/diagnostico_inicial.md).
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="2">KPI 06 — População em Idade Ativa</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Fonte</strong></td>
-      <td>IBGE</td>
-    </tr>
-    <tr>
-      <td><strong>Período</strong></td>
-      <td>2022</td>
-    </tr>
-    <tr>
-      <td><strong>Nível</strong></td>
-      <td>Municipal</td>
-    </tr>
-    <tr>
-      <td><strong>Agregado / Variável</strong></td>
-      <td>6893 / 382</td>
-    </tr>
-    <tr>
-      <td><strong>Filtros</strong></td>
-      <td>
-        Localidades: <code>N6[N3[42]]</code><br>
-        Classificação: <code>125[2932]|58[1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153]|86[95251]</code>
-      </td>
-    </tr>
-    <tr>
-      <td><strong>Faixa etária</strong></td>
-      <td>15 a 69 anos</td>
-    </tr>
-    <tr>
-      <td><strong>Endpoint</strong></td>
-      <td>
-        <a href="https://servicodados.ibge.gov.br/api/v3/agregados/6893/periodos/2022/variaveis/382?localidades=N6[N3[42]]&classificacao=125[2932]%7C58[1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153]%7C86[95251]">Consultar API do IBGE</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
----
-
-## 3. Crescimento
-
-Investiga a estrutura etária, a evolução dos domicílios e a movimentação do emprego formal na construção civil.
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="2">KPI 07 — Razão de Dependência</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Fonte</strong></td>
-      <td>IBGE</td>
-    </tr>
-    <tr>
-      <td><strong>Período</strong></td>
-      <td>2022</td>
-    </tr>
-    <tr>
-      <td><strong>Nível</strong></td>
-      <td>Municipal</td>
-    </tr>
-    <tr>
-      <td><strong>Agregado / Variável</strong></td>
-      <td>6893 / 382</td>
-    </tr>
-    <tr>
-      <td><strong>Filtros</strong></td>
-      <td>
-        Localidades: <code>N6[N3[42]]</code><br>
-        Classificação: <code>125[2932]|58[1140,1141,1142,1154,1155,6802,6803,92963,92964,92965]|86[95251]</code>
-      </td>
-    </tr>
-    <tr>
-      <td><strong>Faixas etárias</strong></td>
-      <td>0 a 14 anos e 70 a 100 anos ou mais</td>
-    </tr>
-    <tr>
-      <td><strong>Endpoint</strong></td>
-      <td>
-        <a href="https://servicodados.ibge.gov.br/api/v3/agregados/6893/periodos/2022/variaveis/382?localidades=N6[N3[42]]&classificacao=125[2932]|58[1140,1141,1142,1154,1155,6802,6803,92963,92964,92965]|86[95251]">Consultar API do IBGE</a>
-      </td>
-    </tr>
-    <tr>
-      <td><strong>Interpretação</strong></td>
-      <td>Uma menor proporção de população dependente em relação à população em idade ativa tende a indicar menor pressão demográfica sobre esse grupo.</td>
-    </tr>
-  </tbody>
-</table>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="2">KPI 08 — Crescimento de Domicílios</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Fonte</strong></td>
-      <td>IBGE</td>
-    </tr>
-    <tr>
-      <td><strong>Nível</strong></td>
-      <td>Municipal</td>
-    </tr>
-    <tr>
-      <td><strong>Objetivo</strong></td>
-      <td>Comparar a evolução da quantidade de domicílios entre os anos censitários disponíveis.</td>
-    </tr>
-  </tbody>
-</table>
-
-<table>
-  <thead>
-    <tr>
-      <th>Período</th>
-      <th>Agregado / Variável</th>
-      <th>Filtros</th>
-      <th>Endpoint</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>2022</td>
-      <td>10053 / 9599</td>
-      <td>
-        <code>N6[N3[42]]</code><br>
-        <code>11558[46292]|14[200]</code>
-      </td>
-      <td>
-        <a href="https://servicodados.ibge.gov.br/api/v3/agregados/10053/periodos/2022/variaveis/9599?localidades=N6[N3[42]]&classificacao=11558[46292]|14[200]" target="_blank" rel="noopener noreferrer">Consultar API</a>
-      </td>
-    </tr>
-    <tr>
-      <td>2010</td>
-      <td>206 / 96</td>
-      <td>
-        <code>N6[N3[42]]</code><br>
-        <code>1[0]|65[0]</code>
-      </td>
-      <td>
-        <a href="https://servicodados.ibge.gov.br/api/v3/agregados/206/periodos/2010/variaveis/96?localidades=N6[N3[42]]&classificacao=1[0]|65[0]" target="_blank" rel="noopener noreferrer">Consultar API</a>
-      </td>
-    </tr>
-    <tr>
-      <td>2000</td>
-      <td>206 / 96</td>
-      <td>
-        <code>N6[N3[42]]</code><br>
-        <code>1[0]|65[0]</code>
-      </td>
-      <td>
-        <a href="https://servicodados.ibge.gov.br/api/v3/agregados/206/periodos/2000/variaveis/96?localidades=N6[N3[42]]&classificacao=1[0]|65[0]" target="_blank" rel="noopener noreferrer">Consultar API</a>
-      </td>
-    </tr>
-    <tr>
-      <td>1991</td>
-      <td>206 / 96</td>
-      <td>
-        <code>N6[N3[42]]</code><br>
-        <code>1[0]|65[0]</code>
-      </td>
-      <td>
-        <a href="https://servicodados.ibge.gov.br/api/v3/agregados/206/periodos/1991/variaveis/96?localidades=N6[N3[42]]&classificacao=1[0]|65[0]" target="_blank" rel="noopener noreferrer">Consultar API</a>
-      </td>
-    </tr>
-    <tr>
-      <td>1980</td>
-      <td>206 / 96</td>
-      <td>
-        <code>N6[N3[42]]</code><br>
-        <code>1[0]|65[0]</code>
-      </td>
-      <td>
-        <a href="https://servicodados.ibge.gov.br/api/v3/agregados/206/periodos/1980/variaveis/96?localidades=N6[N3[42]]&classificacao=1[0]|65[0]" target="_blank" rel="noopener noreferrer">Consultar API</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="2">KPI 09 — Admissões e Saldo de Empregos na Construção Civil</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Fonte</strong></td>
-      <td>Novo CAGED — Ministério do Trabalho e Emprego</td>
-    </tr>
-    <tr>
-      <td><strong>Período</strong></td>
-      <td>Janeiro a agosto de 2026</td>
-    </tr>
-    <tr>
-      <td><strong>Nível</strong></td>
-      <td>Municipal</td>
-    </tr>
-    <tr>
-      <td><strong>Dados</strong></td>
-      <td>Movimentações de admissões e desligamentos do emprego formal.</td>
-    </tr>
-    <tr>
-      <td><strong>Fonte dos arquivos</strong></td>
-      <td>
-        <a href="ftp://ftp.mtps.gov.br/pdet/microdados/NOVO%20CAGED/">Acessar microdados do Novo CAGED</a>
-      </td>
-    </tr>
-    <tr>
-      <td><strong>Filtros necessários</strong></td>
-      <td>
-        Filtrar o código IBGE do estado de Santa Catarina e agrupar os dados por município.<br>
-        Confirmar também o enquadramento da atividade econômica na construção civil.
-      </td>
-    </tr>
-    <tr>
-      <td><strong>Tratamento</strong></td>
-      <td>Consolidar as admissões e os desligamentos por município e mês para calcular o saldo de empregos.</td>
-    </tr>
-    <tr>
-      <td><strong>Interpretação</strong></td>
-      <td>Saldo positivo indica crescimento líquido do emprego formal no período; saldo negativo indica redução.</td>
-    </tr>
-  </tbody>
-</table>
-
----
-
-## Tratamento e integração dos dados
-
-- **Extração:** consumir as APIs públicas e baixar os microdados necessários.
-- **Padronização:** identificar os municípios pelo código IBGE.
-- **Transformação:** validar classificações, somar categorias quando necessário e calcular os indicadores derivados.
-- **Armazenamento:** carregar os dados tratados no PostgreSQL.
-- **Visualização:** utilizar o Power BI para comparar os municípios e apoiar a decisão estratégica.
-
-<div align="center">
-  <sub>Projeto de portfólio — Business Intelligence e análise de dados para seleção de municípios em Santa Catarina.</sub>
-</div>
+O Power BI incorpora um snapshot público exportado exclusivamente do SQL corrigido; não atualiza automaticamente a partir da API ou do banco. Consulte o [README](../README.md) para atualizar e a [metodologia](../docs/metodologia.md) para limites, fórmulas e regras de empate. O índice expressa atratividade relativa, sem estimar ROI ou probabilidade de retorno.

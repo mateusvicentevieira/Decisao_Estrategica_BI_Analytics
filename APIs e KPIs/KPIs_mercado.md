@@ -1,200 +1,38 @@
-<h1 align="center">KPIs — Mercado</h1>
+# KPIs — Mercado
 
-<p align="center">
-  Indicadores para avaliar o potencial de mercado dos municípios
-  de Santa Catarina para a abertura de uma nova filial.
-</p>
+Atualizado em 04/11/2026. Esta versão substitui a documentação dos indicadores de mercado anteriores. O índice utiliza somente dados municipais de 2022 da camada SQL corrigida; o histórico de concorrência fica separado.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Área-Mercado-1565C0?style=flat-square">
-  <img src="https://img.shields.io/badge/Fonte-IBGE%20e%20CEMPRE-2E7D32?style=flat-square">
-  <img src="https://img.shields.io/badge/Granularidade-Município-607D8B?style=flat-square">
-</p>
+## Domicílios particulares permanentes ocupados
 
----
+Fonte: [IBGE, agregado 4712, variável 381, 2022](https://servicodados.ibge.gov.br/api/v3/agregados/4712/periodos/2022/variaveis/381?localidades=N6%5BN3%5B42%5D%5D), sem classificação adicional. Unidade: domicílios.
 
-## Como o mercado será avaliado?
+Representa o porte do mercado residencial existente. Não mede novas construções, imóveis desocupados nem todo o estoque imobiliário. Recebe score min–max direto: `100 × (valor − mínimo estadual) / (máximo estadual − mínimo estadual)`.
 
-A análise considera três indicadores: população, quantidade de
-domicílios e empresas relacionadas ao setor de construção.
+**Peso de referência: 40% do índice total.** Os limites são estaduais e fixos por versão; escolher um município no painel não altera o score.
 
-<table>
-  <tr>
-    <td align="center" width="33%">
-      <img src="https://img.icons8.com/fluency/96/conference.png"
-           width="55" alt="População">
-      <h3>01. População</h3>
-      <p>Tamanho do mercado consumidor.</p>
-      <strong>Peso: 40%</strong>
-    </td>
-    <td align="center" width="33%">
-      <img src="https://img.icons8.com/fluency/96/home.png"
-           width="55" alt="Domicílios">
-      <h3>02. Domicílios</h3>
-      <p>Quantidade de unidades que podem demandar produtos.</p>
-      <strong>Peso: 60%</strong>
-    </td>
-    <td align="center" width="33%">
-      <img src="https://img.icons8.com/fluency/96/shop.png"
-           width="55" alt="Empresas">
-      <h3>03. Empresas</h3>
-      <p>Potencial de demanda do mercado profissional.</p>
-      <strong>Peso: A definir</strong>
-    </td>
-  </tr>
-</table>
+## População residente total
 
-<p align="center">
-  <sub>Os pesos de população e domicílios correspondem à composição
-  do mercado residencial. O peso do terceiro indicador ainda não foi definido.</sub>
-</p>
+Fonte: [IBGE, agregado 4709, variável 93, 2022](https://servicodados.ibge.gov.br/api/v3/agregados/4709/periodos/2022/variaveis/93?localidades=N6%5BN3%5B42%5D%5D), sem classificação adicional. Unidade: pessoas.
 
----
+A população contextualiza o mercado e é o denominador da saturação. **Não recebe peso adicional**, para evitar pontuar duas vezes o porte já representado por domicílios. Os antigos valores de moradores do agregado 6750/9598 são recorte de entorno e não podem substituir este total.
 
-## 01. População
+## Saturação de unidades locais varejistas
 
-<img src="https://img.icons8.com/fluency/96/conference.png"
-     width="55" alt="População">
-
-**O que mede?**
-
-A quantidade de habitantes de cada município.
-
-**Por que analisar?**
-
-Ajuda a estimar o tamanho potencial do mercado consumidor.
-Entretanto, população não significa quantidade de clientes,
-pois várias pessoas podem morar na mesma residência e compartilhar
-as decisões de compra.
-
-**Como será calculado?**
-
-População = quantidade de habitantes do município
-
-
-**Como entra na análise?**
-
-- Será convertida em um score de 0 a 100.
-- Terá peso de 40% dentro do mercado residencial.
-- Quanto maior a população, maior o potencial indicado pelo KPI.
-
-| Informação | Detalhe |
-|---|---|
-| Fonte | IBGE — Censo Demográfico |
-| Período | 2022 |
-| Granularidade | Município |
-
----
-
-## 02. Domicílios
-
-<img src="https://img.icons8.com/fluency/96/home.png"
-     width="55" alt="Domicílios">
-
-**O que mede?**
-
-A quantidade de domicílios existentes em cada município.
-
-**Por que analisar?**
-
-Cada domicílio representa uma unidade física que pode precisar
-de materiais de construção e manutenção, independentemente
-da quantidade de moradores.
-
-**Como será calculado?**
+Fonte: [CEMPRE, agregado 9528, variável 706, 2022](https://servicodados.ibge.gov.br/api/v3/agregados/9528/periodos/2022/variaveis/706?localidades=N6%5BN3%5B42%5D%5D&classificacao=12762%5B117452%5D). Classificação `12762[117452]`: grupo CNAE 47.4, comércio varejista de material de construção. Unidade original: unidades locais.
 
 ```text
-Domicílios = quantidade de domicílios existentes no município
+Saturação = 10.000 × unidades locais CNAE 47.4 de 2022 / população residente de 2022
+Score inverso = 100 × (máximo estadual − saturação) / (máximo estadual − mínimo estadual)
 ```
 
-**Como entra na análise?**
+**Peso de referência: 20% do índice total.** Menor densidade de concorrentes recebe maior score por hipótese gerencial. Isso não comprova demanda reprimida: uma densidade baixa também pode refletir características de mercado ausentes do modelo.
 
-- Será convertido em um score de 0 a 100.
-- Terá peso de 60% dentro do mercado residencial.
-- Quanto maior a quantidade de domicílios, maior o potencial
-  indicado pelo KPI.
+O grupo é consultado uma vez. Não se somam grupos a suas classes filhas nem a construção civil e atacado. Unidades locais não equivalem a empresas únicas, redes, capacidade de venda ou faturamento. Os totais antigos do agregado 6450, com categorias sobrepostas, não alimentam o modelo atual.
 
-| Informação | Detalhe |
-|---|---|
-| Fonte | IBGE — Censo Demográfico |
-| Período | 2022 |
-| Granularidade | Município |
+## Composição e comparação
 
----
+A referência completa é 40% domicílios + 30% rendimento do trabalho + 20% saturação invertida + 10% ocupação 14+, com todos os componentes normalizados de 0 a 100 e pertencentes a 2022. Os três cenários alternativos testam pesos iguais (25/25/25/25), ênfase em mercado (50/25/15/10) e menor saturação (30/25/35/10), nessa mesma ordem de componentes.
 
-## 03. Empresas relacionadas à construção
+A série de unidades locais de 2022, 2023 e 2024 é contexto histórico comparável dentro do CEMPRE 9528; não muda o ano do índice nem usa população de outro período para formar taxas. Os [endpoints e classificações completos](APIs.md), a [metodologia](../docs/metodologia.md) e os [resultados](../docs/relatorio.md) documentam a versão usada.
 
-<img src="https://img.icons8.com/fluency/96/shop.png"
-     width="55" alt="Empresas">
-
-**O que mede?**
-
-A quantidade de empresas relacionadas às atividades econômicas
-de venda de materiais de construção em cada município.
-
-**Por que analisar?**
-
-Ajuda a estimar o potencial de demanda de empresas e profissionais
-que atuam no mercado da construção.
-
-**Atenção:** este indicador é uma *proxy*. A quantidade de empresas
-não representa diretamente o faturamento nem o volume de compras.
-
-**Como será calculado?**
-
-```text
-Empresas = quantidade de empresas enquadradas
-nas atividades econômicas selecionadas
-```
-
-A classificação econômica exata ainda será definida durante
-o desenvolvimento do projeto.
-
-**Como entra na análise?**
-
-- Quanto maior a quantidade de empresas, maior o potencial
-  indicado pelo KPI.
-- A regra de pontuação e o peso ainda serão definidos.
-
-| Informação | Detalhe |
-|---|---|
-| Fonte | Cadastro Central de Empresas (CEMPRE) |
-| Período | 2021 |
-| Granularidade | Município |
-| Classificação prevista | Empresas especializadas em vendas por atacado e varejo de materiais de construção |
-
----
-
-## Como os indicadores serão utilizados?
-
-<div align="center">
-
-  <img src="https://img.icons8.com/fluency/96/database.png"
-       width="45" alt="Dados">
-
-  <h3>Dados municipais</h3>
-  <p>Coleta das informações nas fontes públicas.</p>
-
-  <img src="https://img.icons8.com/fluency/96/combo-chart.png"
-       width="45" alt="Pontuação">
-
-  <h3>Padronização dos indicadores</h3>
-  <p>Conversão dos valores em scores de 0 a 100,
-  conforme as regras que serão definidas.</p>
-
-  <img src="https://img.icons8.com/fluency/96/graph.png"
-       width="45" alt="Comparação">
-
-  <h3>Comparação dos municípios</h3>
-  <p>Análise dos resultados para identificar
-  os mercados com maior potencial.</p>
-
-</div>
-
----
-
-<div align="center">
-  <img src="https://img.shields.io/badge/Projeto-Decisão%20Estratégica-1565C0?style=for-the-badge">
-  <p><strong>Dados para apoiar decisões de expansão.</strong></p>
-  <sub>Documentação dos KPIs de Mercado | Em desenvolvimento</sub>
-</div>
+Ausências permanecem nulas; o marcador oficial `-` é zero absoluto publicado. Sem os quatro componentes válidos ou sem variação para normalizar, não se cria pontuação arbitrária. O índice é relativo, com pesos gerenciais e sensibilidade a extremos; não calcula retorno financeiro.

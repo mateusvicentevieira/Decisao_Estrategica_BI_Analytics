@@ -1,0 +1,49 @@
+table Cenario
+	lineageTag: 6968b361-152f-5556-abd8-cd3d79b4fe4a
+
+	column cenario
+		dataType: string
+		lineageTag: 085a9cac-bb5e-43b5-b0ef-5f9353e8e2e2
+		summarizeBy: none
+		sourceColumn: cenario
+
+	column peso_mercado
+		dataType: int64
+		formatString: 0
+		lineageTag: dfe0c706-0277-4ecb-a86e-23dc91846577
+		summarizeBy: none
+		sourceColumn: peso_mercado
+
+	column peso_renda
+		dataType: int64
+		formatString: 0
+		lineageTag: e0e38df0-ebba-4e0c-b6ab-75ad910abe61
+		summarizeBy: none
+		sourceColumn: peso_renda
+
+	column peso_saturacao
+		dataType: int64
+		formatString: 0
+		lineageTag: 597d4b72-6192-451c-96f1-8e23903843df
+		summarizeBy: none
+		sourceColumn: peso_saturacao
+
+	column peso_ocupacao
+		dataType: int64
+		formatString: 0
+		lineageTag: e0b1a2d7-0c78-4a06-91fb-e3baa66ce808
+		summarizeBy: none
+		sourceColumn: peso_ocupacao
+
+	partition Cenario = m
+		mode: import
+		source =
+				let
+					Fonte = #table(type table [cenario = text, peso_mercado = Int64.Type, peso_renda = Int64.Type, peso_saturacao = Int64.Type, peso_ocupacao = Int64.Type], {
+						{"Referência", 40, 30, 20, 10},
+						{"Pesos iguais", 25, 25, 25, 25},
+						{"Ênfase mercado", 50, 25, 15, 10},
+						{"Menor saturação", 30, 25, 35, 10}
+					})
+				in
+					Fonte
